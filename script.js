@@ -22,3 +22,13 @@ function factorialRecursive(n){
         return n * factorialRecursive(n - 1);
     }
 }
+
+function allRecursive(array,callback, index = 0){
+    if(array.length === index){
+        return true;
+    }
+    if(!callback(array[index])){
+        return false;
+    }
+    return allRecursive(array,callback, index + 1);
+}
