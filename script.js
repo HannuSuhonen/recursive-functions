@@ -45,9 +45,20 @@ function containsRecursive(object,value){
     for(const property in object){
         if(object[property] === value){
             return true;
-        }else{
+        }else if(typeof object[property] === 'object' && object[property] !== null){
             return containsRecursive(object[property],value);
         }
     }
     return false;
+}
+
+function totalIntegersRecursive(array,total = 0){
+    for(const property in array){
+        if(typeof array[property] === "number"){
+            total += 1;
+        }else if(typeof array[property] === "object"){
+            total += totalIntegersRecursive(array[property]);
+        }
+    }
+    return total
 }
