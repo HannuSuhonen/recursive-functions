@@ -62,3 +62,27 @@ function totalIntegersRecursive(array,total = 0){
     }
     return total
 }
+
+function sumSquaresRecursive(list,total = 0){
+    if(list.length === 0){
+        return 0;
+    }
+    for(const property in list){
+        if(typeof list[property] === "number"){
+            total += list[property] * list[property];
+        }
+        if(typeof list[property] === "object"){
+            total += sumSquaresRecursive(list[property]);
+        }
+    }
+    return total;
+}
+
+function replicateRecursive(iterator,value,returnArr = []){
+    if(iterator <= 0){
+        return returnArr;
+    }else{
+        returnArr.push(value);
+        return replicate(iterator - 1,value,returnArr);
+    }
+}
