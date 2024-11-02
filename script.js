@@ -86,3 +86,27 @@ function replicateRecursive(iterator,value,returnArr = []){
         return replicate(iterator - 1,value,returnArr);
     }
 }
+
+function fib(length){
+    let array = [0,1];
+    for(let i = 2; i < length; i++){
+        array.push(array[array.length - 1] + array[array.length - 2])
+    }
+    if(length === 1) {
+        return 0;
+    }else if(length !== undefined){ 
+        return array;
+    }
+}
+
+function fibRecursive(length,array = [0,1]){
+    if(length === 1 || length === 0){
+        return 0;
+    }
+    if(length <= 2){
+        return array;
+    }else{
+        array.push(array[array.length - 1] + array[array.length - 2])
+        return fibRecursive(length - 1,array);
+    }
+}
