@@ -110,3 +110,38 @@ function fibRecursive(length,array = [0,1]){
         return fibRecursive(length - 1,array);
     }
 }
+
+function mergeSort(array){
+    if(array.length <= 1){
+        return array;
+    }else{
+        const half = Math.ceil(array.length / 2);
+        const firstHalf = array.slice(0, half)
+        const secondHalf = array.slice(half)
+        return merge(mergeSort(firstHalf),mergeSort(secondHalf));
+    }
+}
+
+function merge(array1,array2){
+    let i = 0;
+    let j = 0;
+    let k = 0;
+
+    let array3 = [];
+
+    while(i < array1.length && j < array2.length){
+        if(array1[i] < array2[j]){
+            array3[k++] = array1[i++];
+        }else{
+            array3[k++] = array2[j++];
+        }
+    }
+    for(; i < array1.length; i++){
+        array3[k++] = array1[i];
+    }
+    for(; j < array2.length; j++){
+        array3[k++] = array2[j];
+    }
+
+    return array3;
+}
